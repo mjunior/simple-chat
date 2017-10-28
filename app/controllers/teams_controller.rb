@@ -3,7 +3,6 @@ class TeamsController < ApplicationController
   before_action :set_by_slug_team, only: [:show]
 
   def index
-    @teams = current_user.teams
   end
 
   def show
@@ -12,6 +11,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
+
     respond_to do |format|
       if @team.save
         format.html { redirect_to "/#{@team.slug}" }
@@ -26,8 +26,7 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.json { head :no_content }
-        format.html { redirect_to main_app.root_url, notice: 'Excluido com sucesso'}
+      format.json { render json: true }
     end
   end
 
