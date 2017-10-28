@@ -23,7 +23,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - '.:/onebitchat'
+      - '.:/simple-chat'
     volumes_from:
     - box
 
